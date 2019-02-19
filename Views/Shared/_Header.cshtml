@@ -1,0 +1,22 @@
+﻿@model GameHUB.Models.ViewModels.LayoutModel
+
+@*HEADER*@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="nav-item">
+        <div id="nav-container">
+            <div class="toggle-icon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div><!-- /toggle-icon -->
+        </div><!-- /nav-container -->
+    </a>
+    <a class="navbar-brand align-content-center" href="#">@Html.PropertyFor(x => x.Header.Title)</a>
+
+    <div class="nav-item mr-sm-2">
+        <i class="fas fa-shopping-cart" style="color:white">&nbsp;1</i>
+    </div>
+    
+</nav>
