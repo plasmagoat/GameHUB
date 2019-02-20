@@ -341,6 +341,8 @@
     <Compile Include="Infrastructure\Initialization\BundleConfig.cs" />
     <Compile Include="Infrastructure\Initialization\FilterInitialization.cs" />
     <Compile Include="Infrastructure\Rendering\LayoutActionFilter.cs" />
+    <Compile Include="Models\Commerce\GameCategory.cs" />
+    <Compile Include="Models\Commerce\GameProduct.cs" />
     <Compile Include="Models\Pages\MasterPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\ViewModels\IViewModel.cs" />
@@ -406,6 +408,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Static\css\Footer.css" />
     <Content Include="Static\css\Menu.css" />
     <Content Include="Static\js\Menu.js" />
     <Content Include="Views\Web.config" />
