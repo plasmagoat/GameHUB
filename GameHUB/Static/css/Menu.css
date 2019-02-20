@@ -1,6 +1,14 @@
-﻿.menu{
-    width: 300px;
-    border-radius: 8px;
+﻿.menu li{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.menu{
+    width: 250px;
+    /*border-radius: 8px;*/
     overflow: hidden;
 }
 .item{
@@ -13,6 +21,7 @@
     background: #3498db;
     color: white;
     position: relative;
+    border-radius: 0;
 }
 .btn:before{
     content: "";
