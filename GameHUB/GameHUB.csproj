@@ -341,8 +341,10 @@
     <Compile Include="Infrastructure\Initialization\BundleConfig.cs" />
     <Compile Include="Infrastructure\Initialization\FilterInitialization.cs" />
     <Compile Include="Infrastructure\Rendering\LayoutActionFilter.cs" />
-    <Compile Include="Models\Commerce\GameCategory.cs" />
+    <Compile Include="Models\Commerce\Category.cs" />
     <Compile Include="Models\Commerce\GameProduct.cs" />
+    <Compile Include="Models\Commerce\MerchProduct.cs" />
+    <Compile Include="Models\Commerce\ModProduct.cs" />
     <Compile Include="Models\Pages\MasterPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\ViewModels\IViewModel.cs" />
