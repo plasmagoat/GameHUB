@@ -9,17 +9,8 @@ namespace GameHUB.Models.Media
 {
     [ContentType(DisplayName = "ImageMedia", GUID = "c6caa8fa-62a2-4dd5-9734-56343c23abf5", Description = "Image type")]
     [MediaDescriptor(ExtensionString = "jpg, jpeg, png, bmp, gif, svg")]
-    public class ImageMedia : MediaData
+    public class ImageMedia : ImageData
     {
-        /*
-                [CultureSpecific]
-                [Editable(true)]
-                [Display(
-                    Name = "Description",
-                    Description = "Description field's description",
-                    GroupName = SystemTabNames.Content,
-                    Order = 1)]
-                public virtual string Description { get; set; }
-         */
+        
     }
 }
