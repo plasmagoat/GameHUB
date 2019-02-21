@@ -8,7 +8,7 @@
 <div>
     <h1> @Model.CurrentContent.Title </h1>
     <h4> @Model.CurrentContent.Description</h4>
-    <img src="@Url.ContentUrl(Model.CurrentContent.Image)"/>
+    <img src="@Url.ContentUrl(Model.CurrentContent.Image)" alt="sut"/>
     <ul>
         @foreach (var genre in Model.CurrentContent.GenreList)
         {

@@ -471,10 +471,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Shared\Blocks\_Twitch.cshtml" />
-    <Content Include="Views\TwitchBlock\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\GameProduct\Index.cshtml" />
+    <Content Include="Views\Shared\Commerce\_Product.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
