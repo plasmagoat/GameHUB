@@ -1,4 +1,6 @@
-﻿@model GameHUB.Models.ViewModels.LayoutModel
+﻿@using EPiServer.Core
+@using GameHUB.Helpers
+@model GameHUB.Models.ViewModels.LayoutModel
 
 <div id="mySidenav" class="sidenav">
     @*<a href="#">GAMES</a>
@@ -9,8 +11,24 @@
     <a href="#">GUIDES</a>
     <a href="#">MERCH</a>*@
     
+    
+    @helper TopMenuTemplate(HtmlHelpers.MenuItem menuItem)
+    {
+        <li class="item" id='@menuItem.Title.ToLower()'>
+            <a href="#@menuItem.Title.ToLower()" class="btn"><i class="fas fa-gamepad"></i>@menuItem.Title</a>
+            <div class="smenu">
+                @foreach (var subMenu in menuItem.SubMenu)
+                {
+                    <a href="@Url.ContentUrl(subMenu.Value)">@subMenu.Key</a>
+                }
+            </div>
+        </li>
+    }
+    
+
     <div class="menu">
-        <li class="item" id='games'>
+        @Html.MenuList(Model.CiderMenu, TopMenuTemplate)
+        @*<li class="item" id='games'>
             <a href="#games" class="btn"><i class="fas fa-gamepad"></i>Games</a>
             <div class="smenu">
                 <a href="#">All</a>
@@ -51,6 +69,6 @@
                 <a href="#">Art</a>
                 <a href="#">Original Sound Tracks</a>
             </div>
-        </li>
+        </li>*@
     </div>
 </div>

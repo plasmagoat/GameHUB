@@ -332,15 +332,22 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Business\Twitch\ITwitchDataFetcher.cs" />
+    <Compile Include="Business\Twitch\TwitchDataFetcher.cs" />
     <Compile Include="Controllers\MasterPageController.cs" />
+    <Compile Include="Controllers\TwitchblockController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Infrastructure\Editor\GroupNames.cs" />
     <Compile Include="Infrastructure\EPiServerCommerceInitializationModule.cs" />
     <Compile Include="Infrastructure\Initialization\BundleConfig.cs" />
     <Compile Include="Infrastructure\Initialization\FilterInitialization.cs" />
+    <Compile Include="Infrastructure\Initialization\TwitchGamesListInitialization.cs" />
     <Compile Include="Infrastructure\Rendering\LayoutActionFilter.cs" />
+    <Compile Include="Models\Blocks\SiteBlock.cs" />
+    <Compile Include="Models\Blocks\TwitchBlock.cs" />
     <Compile Include="Models\Commerce\Category.cs" />
     <Compile Include="Models\Commerce\GameProduct.cs" />
     <Compile Include="Models\Commerce\MerchProduct.cs" />
@@ -353,8 +360,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Business\" />
-    <Folder Include="Models\Blocks\" />
     <Folder Include="Models\Media\" />
     <Folder Include="Models\Properties\" />
   </ItemGroup>
@@ -447,6 +452,8 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\TwitchBlock\Index.cshtml" />
+    <Content Include="Views\Shared\Blocks\_Twitch.cshtml" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />

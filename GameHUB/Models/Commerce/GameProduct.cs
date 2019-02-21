@@ -29,5 +29,6 @@ namespace GameHUB.Models.Commerce
 
         [Display(Name = "Twitch String", Description = "Game Twitch String", GroupName = SystemTabNames.Content, Order = 5)]
         public virtual string TwitchString { get; set; }
+        
     }
 }
