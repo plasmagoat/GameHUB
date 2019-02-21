@@ -1,14 +1,28 @@
-﻿@model EPiServer.Commerce.Catalog.ContentTypes.ProductContent
+﻿@using EPiServer.Core
+@using GameHUB.Helpers
+@using GameHUB.Models.Commerce;
 
-<!DOCTYPE html>
+@model SiteProduct
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+@{
+    var pictureUrl = Url.ContentUrl(Model.Image);
+    var product = Model as GameProduct;
+    if (product != null && Model.Image == null)
+    {
+        pictureUrl = product.TwitchImageUrl;
+    }
+    
+}
+
+
+<div class="card">
+    <a href="@Url.ContentUrl(Model.ContentLink)">
+        <img src="@pictureUrl" class="card-img-top" alt="...">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title">@Html.ForGameTitle(Model) @Model.Name</h5>
+        <p class="card-text">@Model.SeoInformation.Description</p>
+        <p class="card-text">From: @Model</p>
+
+    </div>
 </div>
-</body>
-</html>

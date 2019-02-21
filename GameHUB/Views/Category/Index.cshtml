@@ -6,7 +6,10 @@
 
 <h2>@Model.CurrentContent.Name</h2>
 
-@foreach (var product in Model.Products)
-{
-    @Html.Partial("Commerce/_Product", product)
-}
+
+<div class="card-columns">
+    @foreach (var product in Model.Products)
+    {
+        @Html.Partial("Commerce/_Product", product)
+    }
+</div>

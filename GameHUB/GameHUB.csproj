@@ -38,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -355,8 +356,11 @@
     <Compile Include="Models\Blocks\TwitchBlock.cs" />
     <Compile Include="Models\Commerce\Category.cs" />
     <Compile Include="Models\Commerce\GameProduct.cs" />
+    <Compile Include="Models\Commerce\GameVariation.cs" />
     <Compile Include="Models\Commerce\MerchProduct.cs" />
     <Compile Include="Models\Commerce\ModProduct.cs" />
+    <Compile Include="Models\Commerce\IReferencable.cs" />
+    <Compile Include="Models\Commerce\SiteProduct.cs" />
     <Compile Include="Models\Media\ImageMedia.cs" />
     <Compile Include="Models\Pages\MasterPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
@@ -421,6 +425,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Static\css\Category.css" />
     <Content Include="Static\css\Footer.css" />
     <Content Include="Static\css\Menu.css" />
     <Content Include="Static\js\Menu.js" />

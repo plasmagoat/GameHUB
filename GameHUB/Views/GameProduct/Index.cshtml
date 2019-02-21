@@ -6,9 +6,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div>
-    <h1> @Model.CurrentContent.Title </h1>
-    <h4> @Model.CurrentContent.Description</h4>
-    <img src="@Url.ContentUrl(Model.CurrentContent.Image)" alt="sut"/>
+    <h1> @Model.CurrentContent.Name</h1>
+    <h4> @Model.CurrentContent.SeoInformation.Description</h4>
+    <img src="@Url.ContentUrl(Model.CurrentContent.Image)" alt="GameImage"/>
     <ul>
         @foreach (var genre in Model.CurrentContent.GenreList)
         {
@@ -16,7 +16,7 @@
         }
     </ul>
     
-    @Html.Partial("Blocks/_Twitch", TwitchUtils.ChannelByGameTitle(Model.CurrentContent.Title))
+    @Html.Partial("Blocks/_Twitch", TwitchUtils.ChannelByGameTitle(Model.CurrentContent.Name))
 
 </div>
 
