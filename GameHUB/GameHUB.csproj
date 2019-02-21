@@ -332,8 +332,12 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Business\Twitch\Initialization\TwitchGamesListInitialization.cs" />
     <Compile Include="Business\Twitch\ITwitchDataFetcher.cs" />
+    <Compile Include="Business\Twitch\Levenshtein\Levenshtein.cs" />
+    <Compile Include="Business\Twitch\ScheduleJob\TwitchSceduledJob.cs" />
     <Compile Include="Business\Twitch\TwitchDataFetcher.cs" />
+    <Compile Include="Business\Twitch\TwitchUtils.cs" />
     <Compile Include="Controllers\MasterPageController.cs" />
     <Compile Include="Controllers\TwitchblockController.cs" />
     <Compile Include="Global.asax.cs">
@@ -465,6 +469,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\Blocks\_Twitch.cshtml" />
+    <Content Include="Views\TwitchBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
