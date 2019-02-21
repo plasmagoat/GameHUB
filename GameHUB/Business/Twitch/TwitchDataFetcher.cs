@@ -11,14 +11,9 @@ namespace GameHUB.Business.Twitch
 {
     public class TwitchDataFetcher : ITwitchDataFetcher
     {
-        private ILog _logger;
 
         private const string TwitchApiUrl = "https://api.twitch.tv/helix/";
 
-        public TwitchDataFetcher(ILog logger)
-        {
-            _logger = logger;
-        }
 
 
         public string GetChannel(int gameId)
@@ -82,7 +77,7 @@ namespace GameHUB.Business.Twitch
                 {
                     var reader = new StreamReader(responseStream, System.Text.Encoding.GetEncoding("utf-8"));
                     var errorText = reader.ReadToEnd();
-                    _logger.Error(errorText, ex);
+                    //_logger.Error(errorText, ex); //TODO: Should log this
                 }
                 throw;
             }

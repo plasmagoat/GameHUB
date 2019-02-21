@@ -332,7 +332,14 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Business\Twitch\Initialization\TwitchGamesListInitialization.cs" />
+    <Compile Include="Business\Twitch\ITwitchDataFetcher.cs" />
+    <Compile Include="Business\Twitch\Levenshtein\Levenshtein.cs" />
+    <Compile Include="Business\Twitch\ScheduleJob\TwitchSceduledJob.cs" />
+    <Compile Include="Business\Twitch\TwitchDataFetcher.cs" />
+    <Compile Include="Business\Twitch\TwitchUtils.cs" />
     <Compile Include="Controllers\MasterPageController.cs" />
+    <Compile Include="Controllers\TwitchblockController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -341,6 +348,8 @@
     <Compile Include="Infrastructure\Initialization\BundleConfig.cs" />
     <Compile Include="Infrastructure\Initialization\FilterInitialization.cs" />
     <Compile Include="Infrastructure\Rendering\LayoutActionFilter.cs" />
+    <Compile Include="Models\Blocks\SiteBlock.cs" />
+    <Compile Include="Models\Blocks\TwitchBlock.cs" />
     <Compile Include="Models\Commerce\Category.cs" />
     <Compile Include="Models\Commerce\GameProduct.cs" />
     <Compile Include="Models\Commerce\MerchProduct.cs" />
@@ -353,8 +362,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Business\" />
-    <Folder Include="Models\Blocks\" />
     <Folder Include="Models\Media\" />
     <Folder Include="Models\Properties\" />
   </ItemGroup>
@@ -458,6 +465,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\Blocks\_Twitch.cshtml" />
+    <Content Include="Views\TwitchBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
