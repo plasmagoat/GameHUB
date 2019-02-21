@@ -1,0 +1,23 @@
+﻿@using System.Web.Mvc.Html
+@using GameHUB.Business.Twitch
+@model GameHUB.Models.ViewModels.PageViewModel<GameHUB.Models.Commerce.GameProduct>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h1> @Model.CurrentContent.Title </h1>
+    <h4> @Model.CurrentContent.Description</h4>
+    <img src="@Url.ContentUrl(Model.CurrentContent.Image)"/>
+    <ul>
+        @foreach (var genre in Model.CurrentContent.GenreList)
+        {
+            <li>@genre</li>
+        }
+    </ul>
+    
+    @Html.Partial("Blocks/_Twitch", TwitchUtils.ChannelByGameTitle(Model.CurrentContent.Title))
+
+</div>
+
+
