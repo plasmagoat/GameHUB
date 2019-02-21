@@ -1,0 +1,12 @@
+﻿@model GameHUB.Models.ViewModels.CategoryViewModel<GameHUB.Models.Commerce.Category>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.CurrentContent.Name</h2>
+
+@foreach (var product in Model.Products)
+{
+    @Html.Partial("Commerce/_Product", product)
+}

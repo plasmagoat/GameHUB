@@ -338,8 +338,9 @@
     <Compile Include="Business\Twitch\ScheduleJob\TwitchSceduledJob.cs" />
     <Compile Include="Business\Twitch\TwitchDataFetcher.cs" />
     <Compile Include="Business\Twitch\TwitchUtils.cs" />
-    <Compile Include="Controllers\MasterPageController.cs" />
-    <Compile Include="Controllers\TwitchblockController.cs" />
+    <Compile Include="Controllers\Commerce\CategoryController.cs" />
+    <Compile Include="Controllers\Pages\MasterPageController.cs" />
+    <Compile Include="Controllers\Blocks\TwitchBlockController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -348,7 +349,6 @@
     <Compile Include="Infrastructure\EPiServerCommerceInitializationModule.cs" />
     <Compile Include="Infrastructure\Initialization\BundleConfig.cs" />
     <Compile Include="Infrastructure\Initialization\FilterInitialization.cs" />
-    <Compile Include="Infrastructure\Initialization\TwitchGamesListInitialization.cs" />
     <Compile Include="Infrastructure\Rendering\LayoutActionFilter.cs" />
     <Compile Include="Models\Blocks\SiteBlock.cs" />
     <Compile Include="Models\Blocks\TwitchBlock.cs" />
@@ -358,6 +358,7 @@
     <Compile Include="Models\Commerce\ModProduct.cs" />
     <Compile Include="Models\Pages\MasterPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
+    <Compile Include="Models\ViewModels\CategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\IViewModel.cs" />
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
@@ -471,6 +472,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\Blocks\_Twitch.cshtml" />
     <Content Include="Views\TwitchBlock\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
