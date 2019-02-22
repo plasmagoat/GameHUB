@@ -1,5 +1,6 @@
 ﻿@using EPiServer.Core
 @using GameHUB.Helpers
+@using Microsoft.Ajax.Utilities
 @model GameHUB.Models.ViewModels.LayoutModel
 
 <div id="mySidenav" class="sidenav">
@@ -15,7 +16,13 @@
     @helper TopMenuTemplate(HtmlHelpers.MenuItem menuItem)
     {
         <li class="item" id='@menuItem.Title.ToLower()'>
-            <a href="#@menuItem.Title.ToLower()" class="btn"><i class="fas fa-gamepad"></i>@menuItem.Title</a>
+            <a href="#@menuItem.Title.ToLower()" class="btn">
+                @if (!menuItem.FontAwesomeIcon.IsNullOrWhiteSpace())
+                {
+                    <i class="fas fa-@menuItem.FontAwesomeIcon"></i>
+                }
+                @menuItem.Title
+            </a>
             <div class="smenu">
                 @foreach (var subMenu in menuItem.SubMenu)
                 {

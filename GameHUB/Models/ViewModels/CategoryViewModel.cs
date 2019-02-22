@@ -27,7 +27,13 @@ namespace GameHUB.Models.ViewModels
         private static Injected<IContentLoader> _contentLoader;
         public static CategoryViewModel<TCategory> Create<TCategory>(TCategory category) where TCategory : NodeContent
         {
-            var products = _contentLoader.Service.GetChildren<SiteProduct>(category.ContentLink);
+            var products = _contentLoader.Service.GetChildren<SiteProduct>(category.ContentLink).ToHashSet();
+            var subCategories = _contentLoader.Service.GetChildren<Category>(category.ContentLink);
+            foreach (var subCategory in subCategories)
+            {
+                products.UnionWith(_contentLoader.Service.GetChildren<SiteProduct>(subCategory.ContentLink));
+            }
+
             return new CategoryViewModel<TCategory>(category, products);
         }
     }

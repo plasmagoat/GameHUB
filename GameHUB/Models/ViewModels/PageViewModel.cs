@@ -12,7 +12,7 @@ namespace GameHUB.Models.ViewModels
         {
             CurrentContent = currentPage;
         }
-        public TPage CurrentContent { get; }
+        public TPage CurrentContent { get; set; }
         public LayoutModel Layout { get; set; }
     }
 

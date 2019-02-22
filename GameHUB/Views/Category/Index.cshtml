@@ -1,4 +1,5 @@
-﻿@model GameHUB.Models.ViewModels.CategoryViewModel<GameHUB.Models.Commerce.Category>
+﻿@using GameHUB.Models.Commerce
+@model GameHUB.Models.ViewModels.CategoryViewModel<GameHUB.Models.Commerce.Category>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,8 +9,22 @@
 
 
 <div class="card-columns">
+    @*@Html.PropertyFor(m => m.Products)*@
     @foreach (var product in Model.Products)
     {
-        @Html.Partial("Commerce/_Product", product)
+        @Html.Action("Index", "ProductTeaser", new {currentContent = product})
+        @*@Html.Partial(product)
+        if (product is GameProduct)
+        {
+            @Html.Partial("Commerce/_GameProduct", product)
+        }
+        if (product is ModProduct)
+        {
+            @Html.Partial("Commerce/_ModProduct", product)
+        }
+        if (product is MerchProduct)
+        {
+            @Html.Partial("Commerce/_MerchProduct", product)
+        }*@
     }
 </div>

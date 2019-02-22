@@ -1,0 +1,23 @@
+﻿@using System.Globalization
+@using EPiServer.Core
+@using GameHUB.Helpers
+@using GameHUB.Models.Commerce;
+
+@model GameHUB.Models.ViewModels.ProductTeaserViewModel<MerchProduct>
+
+@{
+    var pictureUrl = Model.Product.Image != null ? Url.ContentUrl(Model.Product.Image) : Html.ForGameTwitchImageUrl(Model.Product.GameReference);
+    var price = Model.FromPrice != 0 ? Model.FromPrice.ToString("#.00 kr", CultureInfo.InvariantCulture) : "A BILLION DOLLARS!";
+}
+
+
+<div class="card">
+    <a href="@Url.ContentUrl(Model.Product.ContentLink)">
+        <img src="@pictureUrl" class="card-img-top" alt="...">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title">@Html.ForGameTitle(Model.Product) @Model.Product.Name</h5>
+        <p class="card-text">@Model.Product.SeoInformation.Description</p>
+        <p class="card-text">From: @price</p>
+    </div>
+</div>

@@ -340,6 +340,7 @@
     <Compile Include="Business\Twitch\TwitchDataFetcher.cs" />
     <Compile Include="Business\Twitch\TwitchUtils.cs" />
     <Compile Include="Controllers\Commerce\CategoryController.cs" />
+    <Compile Include="Controllers\Commerce\ProductTeaserController.cs" />
     <Compile Include="Controllers\Pages\MasterPageController.cs" />
     <Compile Include="Controllers\Blocks\TwitchBlockController.cs" />
     <Compile Include="Controllers\GameProductController.cs" />
@@ -368,9 +369,11 @@
     <Compile Include="Models\ViewModels\IViewModel.cs" />
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductTeaserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Infrastructure\Commerce\" />
     <Folder Include="Models\Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -479,6 +482,10 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\GameProduct\Index.cshtml" />
     <Content Include="Views\Shared\Commerce\_Product.cshtml" />
+    <Content Include="Views\Shared\Commerce\_GameProduct.cshtml" />
+    <Content Include="Views\Shared\Commerce\_MerchProduct.cshtml" />
+    <Content Include="Views\Shared\Commerce\_ModProduct.cshtml" />
+    <Content Include="Views\ProductTeaser\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

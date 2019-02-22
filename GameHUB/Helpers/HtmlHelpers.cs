@@ -26,6 +26,12 @@ namespace GameHUB.Helpers
 
             return game.Name + ":";
         }
+        public static string ForGameTwitchImageUrl(this HtmlHelper helper, ContentReference gameReference)
+        {
+            var game = _contentLoader.Service.Get<GameProduct>(gameReference);
+
+            return game.TwitchImageUrl;
+        }
 
         public static IHtmlString MenuList(
             this HtmlHelper helper,
@@ -38,7 +44,8 @@ namespace GameHUB.Helpers
                 
                 var topMenu = _contentLoader.Service.Get<IContent>(topMenuItem.ContentLink);
                 var item = new MenuItem(topMenu.Name, topMenu.ContentLink);
-                
+
+                if (topMenu is Category category) item.FontAwesomeIcon = category.FontAwesomeIcon;
 
                 foreach (var child in _contentLoader.Service.GetChildren<IContent>(topMenu.ContentLink))
                 {
@@ -72,6 +79,7 @@ namespace GameHUB.Helpers
 
             public string Title { get; set; }
             public Dictionary<string, ContentReference> SubMenu { get; set; }
+            public string FontAwesomeIcon { get; set; }
 
         }
 
