@@ -1,6 +1,9 @@
 ﻿using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
+using System;
 using System.Web.Optimization;
+using BundleTransformer.Core.Bundles;
+using BundleTransformer.Core.Resolvers;
 
 namespace GameHUB.Infrastructure.Initialization
 {
@@ -16,8 +19,18 @@ namespace GameHUB.Infrastructure.Initialization
 
         private void RegisterBundles(BundleCollection bundles)
         {
+            BundleResolver.Current = new CustomBundleResolver();
             bundles.Add(CreateScriptBundle("~/bundle/scripts", "~/Static/js"));
             bundles.Add(CreateStyleBundle("~/bundle/styles","~/Static/css"));
+            bundles.Add(CreateSassBundle("~/bundle/sass", "~/Static/css"));
+        }
+
+        private static Bundle CreateSassBundle(string name, string serverPath)
+        {
+            var sassBundle = new CustomStyleBundle(name);
+            sassBundle.IncludeDirectory(serverPath, "*.scss");
+
+            return sassBundle;
         }
 
         private static Bundle CreateScriptBundle(string name, string serverPath)
