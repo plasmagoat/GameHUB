@@ -16,7 +16,7 @@
         }
     </ul>
     
-    @Html.Partial("Blocks/_Twitch", TwitchUtils.ChannelByGameTitle(Model.CurrentContent.Name))
+    @Html.Partial("Blocks/_Twitch", TwitchUtils.ChannelByGameTitle(Model.CurrentContent.TwitchGameId))
 
 </div>
 

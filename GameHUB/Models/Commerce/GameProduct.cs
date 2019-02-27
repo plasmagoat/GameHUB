@@ -19,7 +19,9 @@ namespace GameHUB.Models.Commerce
         [Display(Name = "Twitch String", Description = "Game Twitch String", GroupName = SystemTabNames.Content, Order = 5)]
         public virtual string TwitchString { get; set; }
 
-        [Display(Name = "Twitch Image", Description = "Twitch Image URL", GroupName = SystemTabNames.Content, Order = 5)]
         public virtual string TwitchImageUrl { get; set; }
+
+        public virtual int TwitchGameId { get; set; }
+
     }
 }
