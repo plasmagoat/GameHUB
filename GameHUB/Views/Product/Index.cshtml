@@ -1,0 +1,49 @@
+﻿@using EPiServer.Web.Mvc.Html
+@using GameHUB.Business.Twitch
+@using GameHUB.Models.Commerce
+@model GameHUB.Models.ViewModels.ProductViewModel<GameHUB.Models.Commerce.SiteProduct>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var product = Model.CurrentContent as GameProduct;
+}
+<div>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col- px-2">
+                <img src="@Model.ImageUrl" alt="GameImage" />
+            </div>
+            <div class="col">
+                <h1 class="display-2">@Model.CurrentContent.Name</h1>
+                <p class="lead">@Model.CurrentContent.SeoInformation.Description</p>
+                <hr class="my-4">
+                <h2 class="display-4">@string.Format("{0:#.00} DKK", @Model.FromPrice) </h2>
+                @using (@Html.BeginForm("AddToCart", "Cart", FormMethod.Post, new { data_container = "miniCartMenu" }))
+                {
+                    <select class="custom-select" name="code" id="code">
+                        @foreach (var variant in Model.Variants)
+                        {
+                            <option value="@variant.Code">@variant.DisplayName</option>
+                        }
+                    </select>
+                    <button class="btn btn-primary jsAddToCart" type="submit">Add to Cart</button>
+                }
+            </div>
+        </div>
+        <hr class="my-4">
+        @if (product != null)
+        {
+            <h6 class="display-3">@Model.CurrentContent.Name Top Twitch Stream</h6>
+            <div class="row px-2">
+                <div class="container">
+                    @Html.Partial("Blocks/_Twitch", TwitchUtils.ChannelByGameTitle(product.TwitchGameId))
+                </div>
+                
+
+            </div>
+        }
+    </div>
+    
+</div>
+
+

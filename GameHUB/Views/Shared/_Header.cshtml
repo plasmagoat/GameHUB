@@ -1,4 +1,5 @@
 ﻿@using EPiServer.Commerce.Order
+@using EPiServer.Web
 @model GameHUB.Models.ViewModels.LayoutModel
 
 @*HEADER*@
@@ -20,7 +21,7 @@
             <div class="hamburger-inner"></div>
         </div>
     </div>
-    <a class="navbar-brand mx-auto" href="#"><i class="fas fa-gamepad"></i>&nbsp;@Html.PropertyFor(x => x.Header.Title)&nbsp;<i class="fas fa-gamepad"></i></a>
+    <a class="navbar-brand mx-auto" href="@Url.ContentUrl(SiteDefinition.Current.StartPage)"><i class="fas fa-gamepad"></i>&nbsp;@Html.PropertyFor(x => x.Header.Title)&nbsp;<i class="fas fa-gamepad"></i></a>
 
     
     <div id="miniCart">
