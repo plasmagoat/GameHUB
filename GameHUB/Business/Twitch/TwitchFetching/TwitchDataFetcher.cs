@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using EPiServer.Logging.Compatibility;
+using GameHUB.Business.Twitch.TwitchFetching;
 using Newtonsoft.Json;
 
 namespace GameHUB.Business.Twitch
@@ -12,49 +13,24 @@ namespace GameHUB.Business.Twitch
     public class TwitchDataFetcher : ITwitchDataFetcher
     {
 
-        private const string TwitchApiUrl = "https://api.twitch.tv/helix/";
+        private const string TwitchNewAPIUrl = "https://api.twitch.tv/helix/";
+        private const string Twitchv5APIUrl = "https://api.twitch.tv/kraken/";
 
 
-
+        public TwitchData.Game GetGame(string name)
+        {
+            var json = Get($"{Twitchv5APIUrl}search/games?query={Uri.EscapeDataString(name)}");
+            var deserializedJson = JsonConvert.DeserializeObject<TwitchData.TopGamesResponse>(json);
+            return deserializedJson.games.First();
+        }
         public string GetChannel(int gameId)
         {
-            var json = Get($"{TwitchApiUrl}streams?game_id={gameId}&first=1");
-            var deserializedJson = JsonConvert.DeserializeObject<TopStreams>(json);
+            var json = Get($"{TwitchNewAPIUrl}streams?game_id={gameId}&first=1");
+            var deserializedJson = JsonConvert.DeserializeObject<TwitchData.TopStreams>(json);
             return deserializedJson.data.First().user_name;
         }
 
-        public IDictionary<string, int> TopGames()
-        {
-            var json = Get($"{TwitchApiUrl}games/top?first=100");
-            var deserializedJson = JsonConvert.DeserializeObject<TopGamesResponse>(json);
-            var dic = new Dictionary<string, int>();
-            foreach (var game in deserializedJson.data)
-            {
-                dic.Add(game.name, game.id);
-            }
-            return dic;
-        }
 
-        private class TopStreams
-        {
-            public List<TwitchStream> data;
-        }
-
-        private class TwitchStream
-        {
-            public string user_name;
-        }
-
-        private class TopGamesResponse
-        {
-            public List<Game> data;
-        }
-
-        private class Game
-        {
-            public string name;
-            public int id;
-        }
 
 
         private string Get(string url)
@@ -62,7 +38,8 @@ namespace GameHUB.Business.Twitch
             var request = (HttpWebRequest)WebRequest.Create(url);
             try
             {
-                request.Headers.Add($"Client-ID: n15junauvbvns3wu1xy9h6vbn4j17r"); // TODO: TESTING
+                request.Accept = "application/vnd.twitchtv.v5+json";
+                request.Headers.Add("Client-ID","n15junauvbvns3wu1xy9h6vbn4j17r"); // TODO: TESTING
                 var response = request.GetResponse();
                 using (var responseStream = response.GetResponseStream())
                 {

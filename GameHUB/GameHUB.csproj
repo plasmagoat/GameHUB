@@ -351,10 +351,11 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
     <Compile Include="Business\Twitch\Initialization\TwitchGamesListInitialization.cs" />
-    <Compile Include="Business\Twitch\ITwitchDataFetcher.cs" />
+    <Compile Include="Business\Twitch\TwitchFetching\ITwitchDataFetcher.cs" />
     <Compile Include="Business\Twitch\Levenshtein\Levenshtein.cs" />
     <Compile Include="Business\Twitch\ScheduleJob\TwitchSceduledJob.cs" />
-    <Compile Include="Business\Twitch\TwitchDataFetcher.cs" />
+    <Compile Include="Business\Twitch\TwitchFetching\TwitchData.cs" />
+    <Compile Include="Business\Twitch\TwitchFetching\TwitchDataFetcher.cs" />
     <Compile Include="Business\Twitch\TwitchUtils.cs" />
     <Compile Include="Controllers\Commerce\CartController.cs" />
     <Compile Include="Controllers\Commerce\CategoryController.cs" />

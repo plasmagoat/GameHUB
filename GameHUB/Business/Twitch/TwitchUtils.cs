@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using EPiServer.Logging;
-using GameHUB.Business.Twitch.Levenshtein;
+using GameHUB.Business.Twitch.TwitchFetching;
 
 namespace GameHUB.Business.Twitch
 {
@@ -9,19 +9,22 @@ namespace GameHUB.Business.Twitch
         /// <summary>
         /// Holds twitches current top 100 games with their names and id's.
         /// </summary>
-        public static IDictionary<string, int> GamesList = new Dictionary<string, int>();
-
         /// <summary>
         /// Fetches the channelname of the top twitch stream of a specific game.
         /// </summary>
-        /// <param name="gameTitle">The title of the game</param>
+        /// <param name="id">Twitch game id</param>
         /// <returns>The username aka. the channelname for a stream on twitch, can be used for _Twitch (block)</returns>
-        public static string ChannelByGameTitle(string gameTitle)
+        public static string ChannelByGameTitle(int id)
         {
-            var realTitle = LevenshteinDistance.BestMatch(gameTitle);
-            var id = GamesList[realTitle];
             return new TwitchDataFetcher().GetChannel(id);
         }
+
+        public static TwitchData.Game GameByTitle(string gameTitle)
+        {
+            return new TwitchDataFetcher().GetGame(gameTitle);
+        }
+
+
 
     }
 }
