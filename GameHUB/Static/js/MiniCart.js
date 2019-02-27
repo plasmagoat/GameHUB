@@ -83,6 +83,7 @@ $(document).on('change', '.input-number', function () {
 });
 
 $(document).on('keydown', '.input-number', function (e) {
+    
     // Allow: backspace, delete, tab, escape, enter and .
     if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
         // Allow: Ctrl+A
@@ -90,6 +91,7 @@ $(document).on('keydown', '.input-number', function (e) {
         // Allow: home, end, left, right
         (e.keyCode >= 35 && e.keyCode <= 39)) {
         // let it happen, don't do anything
+        if (e.keyCode == 13) e.preventDefault();
         return;
     }
     // Ensure that it is a number and stop the keypress

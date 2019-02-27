@@ -35,7 +35,7 @@
                 <select class="custom-select" name="code" id="code">
                     @foreach (var variant in Model.Variants)
                     {
-                        <option value="@variant.Code">@variant.Name</option>
+                        <option value="@variant.Code">@variant.DisplayName</option>
                     }
                 </select>
                 <button class="btn btn-primary jsAddToCart" type="submit">Add to Cart</button>

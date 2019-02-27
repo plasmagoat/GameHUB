@@ -34,7 +34,7 @@ namespace GameHUB.Infrastructure.Commerce
 
             if (lineItem == null)
             {
-                lineItem = AddLineItem(cart, code, quantity, entryContent.DisplayName);
+                lineItem = AddLineItem(cart, code, quantity, entryContent.Name);
             }
             else
             {
