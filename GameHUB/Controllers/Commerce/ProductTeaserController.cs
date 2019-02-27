@@ -19,20 +19,20 @@ namespace GameHUB.Controllers.Commerce
             /* Implementation of action. You can create your own view model class that you pass to the view or
              * you can pass the page type for simpler templates */
             
-            switch (currentContent)
-            {
-                case GameProduct gameProduct:
-                    var gameModel = ProductTeaserViewModel.Create(gameProduct);
-                    return PartialView("Commerce/_GameProduct", gameModel);
-                case ModProduct modProduct:
-                    var modModel = ProductTeaserViewModel.Create(modProduct);
-                    return PartialView("Commerce/_ModProduct", modModel);
-                case MerchProduct merchProduct:
-                    var merchModel = ProductTeaserViewModel.Create(merchProduct);
-                    return PartialView("Commerce/_MerchProduct", merchModel);
-            }
+            //switch (currentContent)
+            //{
+            //    case GameProduct gameProduct:
+            //        var gameModel = ProductTeaserViewModel.Create(gameProduct);
+            //        return PartialView("Commerce/_GameProduct", gameModel);
+            //    case ModProduct modProduct:
+            //        var modModel = ProductTeaserViewModel.Create(modProduct);
+            //        return PartialView("Commerce/_ModProduct", modModel);
+            //    case MerchProduct merchProduct:
+            //        var merchModel = ProductTeaserViewModel.Create(merchProduct);
+            //        return PartialView("Commerce/_MerchProduct", merchModel);
+            //}
             var model = ProductTeaserViewModel.Create(currentContent);
-            return PartialView(model);
+            return PartialView("Commerce/_Product", model);
         }
     }
 }

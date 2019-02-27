@@ -4,6 +4,7 @@ using EPiServer.ServiceLocation;
 using GameHUB.Models.ViewModels;
 using System.Web.Mvc;
 using EPiServer.Web;
+using GameHUB.Infrastructure.Commerce;
 using GameHUB.Models.Pages;
 
 namespace GameHUB.Infrastructure.Rendering
@@ -12,10 +13,12 @@ namespace GameHUB.Infrastructure.Rendering
     public class LayoutActionFilter : IActionFilter
     {
         private readonly IContentLoader _contentLoader;
+        private readonly ICartService _cartService;
 
-        public LayoutActionFilter(IContentLoader contentLoader)
+        public LayoutActionFilter(IContentLoader contentLoader, ICartService cartService)
         {
             _contentLoader = contentLoader;
+            _cartService = cartService;
         }
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -55,8 +58,8 @@ namespace GameHUB.Infrastructure.Rendering
                 {
                     AboutLinks = startPage.AboutLinks,
                     LegalLinks = startPage.LegalLinks
-                }
-
+                },
+                Cart = _cartService.LoadOrCreateCart("Default")
             };
         }
     }

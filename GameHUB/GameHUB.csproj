@@ -42,7 +42,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>default</LangVersion>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,6 +51,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdvancedStringBuilder, Version=0.1.0.0, Culture=neutral, PublicKeyToken=e818a2fc08933ddb, processorArchitecture=MSIL">
@@ -355,6 +356,7 @@
     <Compile Include="Business\Twitch\ScheduleJob\TwitchSceduledJob.cs" />
     <Compile Include="Business\Twitch\TwitchDataFetcher.cs" />
     <Compile Include="Business\Twitch\TwitchUtils.cs" />
+    <Compile Include="Controllers\Commerce\CartController.cs" />
     <Compile Include="Controllers\Commerce\CategoryController.cs" />
     <Compile Include="Controllers\Commerce\ProductTeaserController.cs" />
     <Compile Include="Controllers\Pages\MasterPageController.cs" />
@@ -364,6 +366,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Infrastructure\Commerce\CartService.cs" />
+    <Compile Include="Infrastructure\Commerce\ICartService.cs" />
     <Compile Include="Infrastructure\Editor\GroupNames.cs" />
     <Compile Include="Infrastructure\EPiServerCommerceInitializationModule.cs" />
     <Compile Include="Infrastructure\Initialization\BundleConfig.cs" />
@@ -389,8 +393,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Infrastructure\Commerce\" />
     <Folder Include="Models\Properties\" />
+    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -447,7 +451,11 @@
     <Content Include="Static\css\Category.css" />
     <Content Include="Static\css\Footer.css" />
     <Content Include="Static\css\Menu.css" />
+    <Content Include="Static\css\MiniCart.css" />
+    <Content Include="Static\js\Cart.js" />
     <Content Include="Static\js\Menu.js" />
+    <Content Include="Static\js\MiniCart.js" />
+    <Content Include="Static\js\TeaserProduct.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -498,11 +506,42 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\GameProduct\Index.cshtml" />
     <Content Include="Views\Shared\Commerce\_Product.cshtml" />
-    <Content Include="Views\Shared\Commerce\_GameProduct.cshtml" />
-    <Content Include="Views\Shared\Commerce\_MerchProduct.cshtml" />
-    <Content Include="Views\Shared\Commerce\_ModProduct.cshtml" />
     <Content Include="Views\ProductTeaser\Index.cshtml" />
     <Content Include="Static\css\main.scss" />
+    <Content Include="Static\css\hamburgers\hamburgers.scss" />
+    <Content Include="Static\css\hamburgers\types\_3dx-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_3dx.scss" />
+    <Content Include="Static\css\hamburgers\types\_3dxy-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_3dxy.scss" />
+    <Content Include="Static\css\hamburgers\types\_3dy-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_3dy.scss" />
+    <Content Include="Static\css\hamburgers\types\_arrow-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_arrow.scss" />
+    <Content Include="Static\css\hamburgers\types\_arrowalt-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_arrowalt.scss" />
+    <Content Include="Static\css\hamburgers\types\_arrowturn-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_arrowturn.scss" />
+    <Content Include="Static\css\hamburgers\types\_boring.scss" />
+    <Content Include="Static\css\hamburgers\types\_collapse-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_collapse.scss" />
+    <Content Include="Static\css\hamburgers\types\_elastic-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_elastic.scss" />
+    <Content Include="Static\css\hamburgers\types\_emphatic-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_emphatic.scss" />
+    <Content Include="Static\css\hamburgers\types\_minus.scss" />
+    <Content Include="Static\css\hamburgers\types\_slider-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_slider.scss" />
+    <Content Include="Static\css\hamburgers\types\_spin-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_spin.scss" />
+    <Content Include="Static\css\hamburgers\types\_spring-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_spring.scss" />
+    <Content Include="Static\css\hamburgers\types\_squeeze.scss" />
+    <Content Include="Static\css\hamburgers\types\_stand-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_stand.scss" />
+    <Content Include="Static\css\hamburgers\types\_vortex-r.scss" />
+    <Content Include="Static\css\hamburgers\types\_vortex.scss" />
+    <Content Include="Static\css\hamburgers\_base.scss" />
+    <Content Include="Views\Shared\Commerce\_MiniCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

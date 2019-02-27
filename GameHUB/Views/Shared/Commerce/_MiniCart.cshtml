@@ -1,0 +1,54 @@
+﻿@using EPiServer.Commerce.Order
+@model EPiServer.Commerce.Order.ICart
+
+
+
+
+<div >
+    @* close button ... not working *@
+    @*<button type="button" class="close px-3" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>*@
+    <h4 class="dropdown-header"><span id="itemCount">@Model.GetAllLineItems().Sum(x => x.Quantity)</span> Items in Cart</h4>
+    <ul class="list-group list-group-flush">
+        @foreach (var item in Model.GetAllLineItems())
+        {
+            using (Html.BeginForm("ChangeCartItem", "Cart", FormMethod.Post, new { data_container = "miniCartMenu" }))
+            {
+                <li class="list-group-item">
+                    @item.DisplayName
+                    <div class="row pt-2">
+                        <div class="col my-auto">@item.PlacedPrice @Model.Currency.CurrencyCode</div>
+                        <div class="col my-auto">
+                            <div class="input-group input-group-sm quantitySelector float-right">
+                                <span class="input-group-btn input-group-prepend">
+                                    <button type="button" class="btn-number btn btn-danger" onclick="adjustQuantity(this)" data-type="minus" data-field="@item.Code">
+                                        <span class="fas fa-minus"></span>
+                                    </button>
+                                </span>
+                                <input type="text" id="quantity" name="@item.Code" class="form-control input-number jsUpdateItemCart" value="@item.Quantity" min="0" max="100">
+                                <span class="input-group-btn input-group-append">
+                                    <button type="button" class="btn-number btn btn-success" onclick="adjustQuantity(this)" data-type="plus" data-field="@item.Code">
+                                        <span class="fas fa-plus"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+
+        }
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col my-auto">
+                    Total: @Model.GetTotal().Amount @Model.Currency
+                </div>
+                <div class="col my-auto">
+                    <button class="btn btn-primary float-right">Checkout</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>

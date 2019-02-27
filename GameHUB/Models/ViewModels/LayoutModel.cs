@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using EPiServer.Commerce.Order;
 using EPiServer.Core;
 using EPiServer.SpecializedProperties;
 
@@ -12,7 +13,7 @@ namespace GameHUB.Models.ViewModels
         public Header Header { get; set; }
         public Footer Footer { get; set; }
         public ContentArea CiderMenu { get; set; }
-
+        public ICart Cart { get; set; }
     }
 
     public class Footer

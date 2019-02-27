@@ -16,7 +16,7 @@ function closeNav() {
 var open = false;
 //https://codepen.io/rss/pen/vIDKH/
 $(".toggle-icon, .hamburger").click(function () {
-    $('#nav-container').toggleClass("pushed");
+    //$('#nav-container').toggleClass("pushed");
     $('.hamburger').toggleClass("is-active");
     if (open) {
         open = false;

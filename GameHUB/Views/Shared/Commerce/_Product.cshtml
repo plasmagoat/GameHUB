@@ -1,28 +1,47 @@
-﻿@using EPiServer.Core
+﻿@using System.Globalization
+@using EPiServer.Core
 @using GameHUB.Helpers
 @using GameHUB.Models.Commerce;
 
-@model SiteProduct
+@model GameHUB.Models.ViewModels.ProductTeaserViewModel<SiteProduct>
 
 @{
-    var pictureUrl = Url.ContentUrl(Model.Image);
-    var product = Model as GameProduct;
-    if (product != null && Model.Image == null)
-    {
-        pictureUrl = product.TwitchImageUrl;
-    }
-    
+    var price = Model.FromPrice != 0 ? Model.FromPrice.ToString("#.00 kr", CultureInfo.InvariantCulture) : "A BILLION DOLLARS!";
 }
 
 
 <div class="card">
-    <a href="@Url.ContentUrl(Model.ContentLink)">
-        <img src="@pictureUrl" class="card-img-top" alt="...">
+    <a href="@Url.ContentUrl(Model.Product.ContentLink)">
+        <img src="@Model.ImageUrl" class="card-img-top" alt="...">
     </a>
     <div class="card-body">
-        <h5 class="card-title">@Html.ForGameTitle(Model) @Model.Name</h5>
-        <p class="card-text">@Model.SeoInformation.Description</p>
-        <p class="card-text">From: @Model</p>
-
+        <h5 class="card-title">@Model.Product.Name</h5>
+        <p class="card-text">@Model.Product.SeoInformation.Description</p>
+        <p class="card-text">From: @price</p>
+        <div class="btn-group" role="group">
+            @*<div class="btn-group varient-selector" role="group">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Edition</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item">test</a>
+                    @foreach (var varient in Model.Variants)
+                    {
+                        <a class="dropdown-item">@varient.Name</a>
+                    }
+                </div>
+            </div>*@
+            
+            @using (@Html.BeginForm("AddToCart","Cart", FormMethod.Post, new {data_container = "miniCartMenu" }))
+            {
+                <select class="custom-select" name="code" id="code">
+                    @foreach (var variant in Model.Variants)
+                    {
+                        <option value="@variant.Code">@variant.Name</option>
+                    }
+                </select>
+                <button class="btn btn-primary jsAddToCart" type="submit">Add to Cart</button>
+            }
+        </div>
+        
+        
     </div>
 </div>
